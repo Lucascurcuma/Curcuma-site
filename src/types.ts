@@ -4,12 +4,22 @@ export interface Product {
   image: string;
   description: string;
   prices: {
-    quantity: number;
-    price: number;
-    checkoutUrl: string;
-  }[];
+    [key: string]: {
+      price: number;
+      affiliateLink: string;
+    };
+  };
+  stock: number;
 }
 
-export interface ProductCardProps {
-  product: Product;
+export interface Testimonial {
+  id: string;
+  name: string;
+  location: string;
+  rating: number;
+  comment: string;
+  image?: string;
+  date: string;
+  product: string;
+  verified: boolean;
 }
