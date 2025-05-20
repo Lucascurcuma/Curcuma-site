@@ -87,11 +87,9 @@ function App() {
         })
       });
 
-      // Always proceed with the order confirmatione
       setIsCheckoutOpen(false);
       setIsConfirmationOpen(true);
       
-      // Reset form
       setCheckoutForm({
         name: '',
         phone: '',
@@ -103,23 +101,20 @@ function App() {
         zipCode: ''
       });
 
-      // Prepare WhatsApp message
       const whatsappMessage = encodeURIComponent(
-        "Hola, confirmo que he realizado mi pedido en *HogarPro*.\n\n" +
+        "Hola, confirmo que he realizado mi pedido en *HallazgosExpress*.\n\n" +
         "Compré: *KIT TALADRO INALÁMBRICO* por un total de *$997 MXN*.\n" +
         "Me comprometo a tener el medio de pago disponible al momento de la entrega.\n\n" +
         "Entiendo que mi pedido llegará aproximadamente en un plazo de *3 a 4 días hábiles*.\n" +
         "¡Gracias por la atención!"
       );
       
-      // Open WhatsApp after a short delay
       setTimeout(() => {
         window.open(`https://wa.me/5511986908935?text=${whatsappMessage}`, '_blank');
       }, 2000);
       
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
-      // Continue with the order process even if there's an error
       setIsCheckoutOpen(false);
       setIsConfirmationOpen(true);
     }
@@ -144,7 +139,7 @@ function App() {
         <div className="container mx-auto px-4 py-2 flex justify-between items-center">
           <div className="flex items-center">
             <Tool className="h-8 w-8 text-yellow-500 mr-2" />
-            <span className="font-bold text-xl">HogarPro</span>
+            <span className="font-bold text-xl">HallazgosExpress</span>
           </div>
           <div className="flex items-center">
             <ShoppingCart className="h-6 w-6" />
@@ -185,12 +180,12 @@ function App() {
                   </div>
                 </div>
                 {/* Thumbnail Navigation */}
-                <div className="flex justify-center mt-4 gap-2">
+                <div className="flex justify-center mt-4 gap-2 overflow-x-auto">
                   {productImages.map((image, index) => (
                     <button
                       key={index}
                       onClick={() => selectImage(index)}
-                      className={`w-20 h-20 rounded-lg overflow-hidden border-2 transition-all bg-white ${
+                      className={`w-20 h-20 rounded-lg overflow-hidden border-2 transition-all bg-white flex-shrink-0 ${
                         currentImageIndex === index ? 'border-yellow-500 scale-110' : 'border-transparent opacity-70'
                       }`}
                     >
@@ -208,7 +203,7 @@ function App() {
               <span className="bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-semibold inline-block mb-4">
                 PRODUCTO MÁS VENDIDO
               </span>
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">
+              <h1 className="text-2xl md:text-4xl font-bold mb-4">
                 EL KIT QUE TODO HOMBRE DE VERDAD NECESITA EN CASA
               </h1>
               <h2 className="text-xl md:text-2xl font-semibold mb-6">
@@ -258,7 +253,7 @@ function App() {
               <span>Envío en 2 a 3 días</span>
             </div>
             
-            <div className="flex items-center justify-between text-sm">
+            <div className="flex flex-col md:flex-row items-center justify-between text-sm gap-4">
               <div className="flex flex-col items-center">
                 <div className="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center mb-1">
                   <span className="text-white font-bold">1</span>
@@ -266,7 +261,7 @@ function App() {
                 <p className="text-center">Pedido Realizado<br />(May 19th)</p>
               </div>
               
-              <div className="flex-1 h-1 bg-yellow-300 mx-2"></div>
+              <div className="hidden md:block flex-1 h-1 bg-yellow-300"></div>
               
               <div className="flex flex-col items-center">
                 <div className="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center mb-1">
@@ -275,7 +270,7 @@ function App() {
                 <p className="text-center">Pedido Listo<br />(May 20th)</p>
               </div>
               
-              <div className="flex-1 h-1 bg-yellow-300 mx-2"></div>
+              <div className="hidden md:block flex-1 h-1 bg-yellow-300"></div>
               
               <div className="flex flex-col items-center">
                 <div className="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center mb-1">
@@ -291,7 +286,7 @@ function App() {
       {/* Features Section */}
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
             CARACTERÍSTICAS QUE HACEN DE ESTE TALADRO TU MEJOR INVERSIÓN
           </h2>
           
@@ -379,7 +374,7 @@ function App() {
       {/* Kit Contents Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
             KIT COMPLETO - TODO LO QUE NECESITAS EN UNA CAJA
           </h2>
           
@@ -476,7 +471,7 @@ function App() {
       {/* Testimonials Section */}
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
             LO QUE DICEN NUESTROS CLIENTES
           </h2>
           
@@ -543,16 +538,16 @@ function App() {
               OFERTA ESPECIAL TERMINA EN:
             </h2>
             
-            <div className="flex justify-center mb-8">
-              <div className="bg-black text-white p-4 rounded-lg mx-1 w-20">
+            <div className="flex justify-center mb-8 gap-2">
+              <div className="bg-black text-white p-4 rounded-lg w-20">
                 <span className="text-3xl font-bold block">{formatTime(timeLeft.hours)}</span>
                 <span className="text-xs">HORAS</span>
               </div>
-              <div className="bg-black text-white p-4 rounded-lg mx-1 w-20">
+              <div className="bg-black text-white p-4 rounded-lg w-20">
                 <span className="text-3xl font-bold block">{formatTime(timeLeft.minutes)}</span>
                 <span className="text-xs">MINUTOS</span>
               </div>
-              <div className="bg-black text-white p-4 rounded-lg mx-1 w-20">
+              <div className="bg-black text-white p-4 rounded-lg w-20">
                 <span className="text-3xl font-bold block">{formatTime(timeLeft.seconds)}</span>
                 <span className="text-xs">SEGUNDOS</span>
               </div>
@@ -562,7 +557,7 @@ function App() {
               ¡Solo quedan 7 unidades disponibles a este precio!
             </p>
             
-            <div className="flex justify-center space-x-6 mb-8">
+            <div className="flex flex-col md:flex-row justify-center gap-6 mb-8">
               <div className="flex flex-col items-center">
                 <Shield className="h-12 w-12 text-yellow-500 mb-2" />
                 <p className="font-semibold">Garantía de devolución de 30 días</p>
@@ -587,7 +582,7 @@ function App() {
       {/* FAQ Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
             PREGUNTAS FRECUENTES
           </h2>
           
@@ -691,17 +686,6 @@ function App() {
         </div>
       </section>
 
-      {/* Popup Notification */}
-      <div className="fixed bottom-4 left-4 bg-white rounded-lg shadow-lg p-4 max-w-xs animate-bounce z-50">
-        <div className="flex items-center">
-          <div className="w-10 h-10 bg-gray-200 rounded-full mr-3"></div>
-          <div>
-            <p className="font-semibold">Juan acaba de comprar este producto</p>
-            <p className="text-sm text-gray-500">hace 20 minutos</p>
-          </div>
-        </div>
-      </div>
-
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
@@ -709,7 +693,7 @@ function App() {
             <div>
               <div className="flex items-center mb-4">
                 <Tool className="h-8 w-8 text-yellow-500 mr-2" />
-                <span className="font-bold text-xl">HogarPro</span>
+                <span className="font-bold text-xl">HallazgosExpress</span>
               </div>
               <p className="mb-4">Tu tienda de confianza para herramientas y productos para el hogar de alta calidad.</p>
               <div className="flex space-x-4">
@@ -744,7 +728,7 @@ function App() {
           </div>
           
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
-            <p>&copy; 2025 HogarPro. Todos los derechos reservados.</p>
+            <p>&copy; 2025 HallazgosExpress. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>
