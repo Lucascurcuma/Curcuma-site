@@ -87,7 +87,7 @@ function App() {
         })
       });
 
-      // Always proceed with the order confirmation
+      // Always proceed with the order confirmatione
       setIsCheckoutOpen(false);
       setIsConfirmationOpen(true);
       
